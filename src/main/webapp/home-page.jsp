@@ -1,0 +1,280 @@
+<%@page import="com.jsp.movieflix_servlet_project.dto.User"%>
+<%@page import="java.util.List"%>
+<%@page import="com.jsp.movieflix_servlet_project.dto.Movie"%>
+<%@page import="java.util.Base64"%>
+<%@page import="com.jsp.movieflix_servlet_project.dao.MovieDao"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HomePage</title>
+<link rel="stylesheet" type="text/css"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.card img {
+	height: 280px;
+	width: 100vh;
+	object-fit: cover;
+}
+
+.background-image {
+	background-image:
+		url('https://user-images.githubusercontent.com/33485020/108069438-5ee79d80-7089-11eb-8264-08fdda7e0d11.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+</style>
+</head>
+<body class="background-image">
+<%
+	MovieDao dao = new MovieDao();
+
+	List<Movie> movies = dao.getAllMovieDetails();
+	
+	%>
+
+	<jsp:include page="homepage-navbar.jsp" />
+	<br>
+	<br>
+
+
+
+
+	<section class="pt-5 pb-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-6">
+					<h3 class="mb-3">BollWood</h3>
+				</div>
+				<div class="col-6 text-right">
+					<a class="btn btn-primary mb-3 mr-1"
+						href="#carouselExampleIndicators2" role="button" data-slide="prev">
+						<i class="fa fa-arrow-left"></i>
+					</a> <a class="btn btn-primary mb-3" href="#carouselExampleIndicators2"
+						role="button" data-slide="next"> <i class="fa fa-arrow-right"></i>
+					</a>
+				</div>
+				<div class="col-12">
+					<div id="carouselExampleIndicators2" class="carousel slide"
+						data-ride="carousel">
+
+						<div class="carousel-inner">
+							<%
+							for (Movie movie : movies) {
+							%>
+
+							<%
+							if (movie.getType().equalsIgnoreCase("BOLLYWOOD")) {
+								String base64Image = Base64.getEncoder().encodeToString(movie.getImageFecth());
+							%>
+
+
+
+							<div class="carousel-item bollywood-item">
+								<div class="row">
+
+									<div class="col-md-4 mb-4">
+										<div class="card">
+											<img class="img-fluid" alt="100%x280"
+												src="data:image/jpeg;base64,<%=base64Image%>">
+
+										</div>
+									</div>
+									<div class="col-md-4 mb-3">
+										<div class="card">
+											<img class="img-fluid" alt="100%x280"
+												src="data:image/jpeg;base64,<%=base64Image%>">
+
+										</div>
+									</div>
+									<div class="col-md-4 mb-3">
+										<div class="card">
+											<img class="img-fluid" alt="100%x280"
+												src="data:image/jpeg;base64,<%=base64Image%>">
+
+										</div>
+									</div>
+
+								</div>
+							</div>
+							<%
+							}
+							%>
+							<%
+							}
+							%>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="pt-5 pb-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-6">
+					<h3 class="mb-3">HollyWood</h3>
+				</div>
+				<div class="col-6 text-right">
+					<a class="btn btn-primary mb-3 mr-1"
+						href="#carouselExampleIndicators3" role="button" data-slide="prev">
+						<i class="fa fa-arrow-left"></i>
+					</a> <a class="btn btn-primary mb-3" href="#carouselExampleIndicators3"
+						role="button" data-slide="next"> <i class="fa fa-arrow-right"></i>
+					</a>
+				</div>
+				<div class="col-12">
+					<div id="carouselExampleIndicators3" class="carousel slide"
+						data-ride="carousel">
+
+						<div class="carousel-inner">
+							<%
+							for (Movie movie : movies) {
+							%>
+
+							<%
+							if (movie.getType().equalsIgnoreCase("HOLLYWOOD")) {
+								String base64Image = Base64.getEncoder().encodeToString(movie.getImageFecth());
+							%>
+
+
+
+							<div class="carousel-item hollywood-item">
+								<div class="row">
+
+									<div class="col-md-4 mb-3">
+										<div class="card">
+											<img class="img-fluid" alt="100%x280"
+												src="data:image/jpeg;base64,<%=base64Image%>">
+
+										</div>
+									</div>
+									<div class="col-md-4 mb-3">
+										<div class="card">
+											<img class="img-fluid" alt="100%x280"
+												src="data:image/jpeg;base64,<%=base64Image%>">
+
+										</div>
+									</div>
+									<div class="col-md-4 mb-3">
+										<div class="card">
+											<img class="img-fluid" alt="100%x280"
+												src="data:image/jpeg;base64,<%=base64Image%>">
+										</div>
+									</div>
+
+
+								</div>
+							</div>
+							<%
+							}
+							%>
+							<%
+							}
+							%>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="pt-5 pb-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-6">
+					<h3 class="mb-3">TollyWood</h3>
+				</div>
+				<div class="col-6 text-right">
+					<a class="btn btn-primary mb-3 mr-1"
+						href="#carouselExampleIndicators4" role="button" data-slide="prev">
+						<i class="fa fa-arrow-left"></i>
+					</a> <a class="btn btn-primary mb-3" href="#carouselExampleIndicators4"
+						role="button" data-slide="next"> <i class="fa fa-arrow-right"></i>
+					</a>
+				</div>
+				<div class="col-12">
+					<div id="carouselExampleIndicators4" class="carousel slide"
+						data-ride="carousel">
+
+						<div class="carousel-inner">
+							<%
+							for (Movie movie : movies) {
+							%>
+
+							<%
+							if (movie.getType().equalsIgnoreCase("TOLLYWOOD")) {
+								String base64Image = Base64.getEncoder().encodeToString(movie.getImageFecth());
+							%>
+
+
+
+							<div class="carousel-item tollywood-item">
+								<div class="row">
+
+									<div class="col-md-4 mb-3">
+										<div class="card">
+											<img class="img-fluid" alt="100%x280"
+												src="data:image/jpeg;base64,<%=base64Image%>">
+
+										</div>
+									</div>
+									<div class="col-md-4 mb-3">
+										<div class="card">
+											<img class="img-fluid" alt="100%x280"
+												src="data:image/jpeg;base64,<%=base64Image%>">
+
+										</div>
+									</div>
+									<div class="col-md-4 mb-3">
+										<div class="card">
+											<img class="img-fluid" alt="100%x280"
+												src="data:image/jpeg;base64,<%=base64Image%>">
+
+										</div>
+									</div>
+
+								</div>
+							</div>
+							<%
+							}
+							%>
+							<%
+							}
+							%>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- JavaScript dependencies -->
+	<script type="text/javascript"
+		src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+	<script type="text/javascript"
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+	<script>
+		$(document).ready(function() {
+			// Add class to the first div
+			$(".bollywood-item:first").addClass("active");
+			$(".hollywood-item:first").addClass("active");
+			$(".tollywood-item:first").addClass("active");
+		});
+	</script>
+	<jsp:include page="all-footer.jsp" />
+</body>
+</html>
